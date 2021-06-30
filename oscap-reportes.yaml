@@ -1,6 +1,6 @@
 ---
 - name: Genera reporte  Oval Debian
-  hosts: serverc
+  hosts: all
   become: yes
   become_user: root
   tasks:
@@ -24,7 +24,7 @@
         flat: yes
 
 - name: Copia remota 
-  hosts: servere
+  hosts: all
   tasks:
     - name: Copia Remota
       synchronize: 
