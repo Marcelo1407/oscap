@@ -1,0 +1,33 @@
+---
+- name: Genera reporte  Oval Debian
+  hosts: serverc
+  become: yes
+  become_user: root
+  tasks:
+    - name: Copia Oval Buster, Jessie, Stretch, Wheezy
+      get_url:
+        url: "{{ item }}"
+        dest: /opt/oval-definitions/
+      loop:
+        - https://debian.org/security/oval/oval-definitions-buster.xml
+        - https://debian.org/security/oval/oval-definitions-jessie.xml
+        - https://debian.org/security/oval/oval-definitions-stretch.xml
+        - https://debian.org/security/oval/oval-definitions-wheezy.xml
+        
+    - name: ejecuto oval y genero el resultado
+      shell: "oscap oval eval --skip-valid --report /tmp/oval.$(hostname -fa).html /opt/oval-definitions/oval-definitions-$(lsb_release -cs).xml"
+      
+    - name: Transfiere archivo reporte para visualizar
+      fetch:
+        src: /tmp/oval.{{ ansible_host }}.html
+        dest: "/var/www/html/oval.{{ ansible_host }}-{{ ansible_date_time.date }}.html"
+        flat: yes
+
+- name: Copia remota 
+  hosts: servere
+  tasks:
+    - name: Copia Remota
+      synchronize: 
+        src: /var/www/html/ 
+        dest: /var/www/html/
+  

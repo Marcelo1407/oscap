@@ -1,0 +1,11 @@
+---
+- name: Install openscap
+  hosts: all
+  tasks:
+    - name: openscap configuraci√n
+      import_role:
+        name: devopstoolbox.openscap
+      vars:
+        openscap_enable_service: true
+      tags: openscap
+

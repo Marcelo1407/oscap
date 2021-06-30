@@ -1,0 +1,8 @@
+---
+- name: Ejecutamos el Oval
+  hosts: spag
+  become: yes
+  gather_facts: no
+  tasks:
+    - name: ejecuto oval y genero el resultado
+      shell: oscap oval eval --skip-valid --report /tmp/oval.$(hostname -fa).html /opt/oval-definitions/oval-definitions-$(lsb_release -cs).xml 

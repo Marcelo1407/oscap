@@ -1,0 +1,11 @@
+---
+- name: "Playbook inventario"
+  hosts: serverd
+  become: yes
+  become_user: root
+  tasks:
+    - name: que servidores tengo
+      debug: var={{inventory_hostname}}
+  
+    - name: Cual es mi nombre de inventario
+      debug: var={{ansible_hostname}}

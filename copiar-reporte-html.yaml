@@ -1,0 +1,9 @@
+---
+- name: copiar reporte remoto oscap
+  hosts: swsp1001lx
+  become: yes
+  become_user: root
+  tasks:
+    - name: transferir archivo
+      shell: scp -r /var/www/html/ swsp1001lx:/tmp/
+

@@ -1,0 +1,16 @@
+---
+- name: Copia remota
+  hosts: serverc
+  become: True
+  become_user: root
+  tasks:
+    - name: copia remota
+      fetch:
+        src: /tmp/oval.{{ inventory_hostname }}.html 
+        dest: /tmp/oval-{{ inventory_hostname }}
+- name: copia local
+  hosts: localhost  
+    - name: copia archivo
+      copy:
+          src: /tmp/oval-{{ inventory_hostname }}/{{ inventory_hostname }}/tmp/oval.{{ inventory_hostname }}.html
+          dest: /var/www/html/oval.{{ inventory_hostname }}.html

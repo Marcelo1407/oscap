@@ -1,0 +1,17 @@
+---
+- name: Copia de Oval Security
+  hosts: debian
+  become: True
+  become_user: root
+  tasks:
+    - name: copia Oval definitions wheezy
+      shell: wget https://debian.org/security/oval/oval-definitions-wheezy.xml -O /opt/oval-definitions/oval-definitions-wheezy.xml
+    - name: copia Oval definitions stretch 
+      shell: wget https://debian.org/security/oval/oval-definitions-stretch.xml -O /opt/oval-definitions/oval-definitions-stretch.xml
+    - name: copia Oval definitions jessie
+      shell: wget https://debian.org/security/oval/oval-definitions-jessie.xml  -O /opt/oval-definitions/oval-definitions-jessie.xml
+    - name: copia Oval definitions buster
+      shell: wget https://debian.org/security/oval/oval-definitions-buster.xml -O /opt/oval-definitions/oval-definitions-buster.xml
+  
+
+  

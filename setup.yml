@@ -1,0 +1,14 @@
+---
+- name: Hosts setup oscap scan
+  hosts: servere
+  become: yes
+  become_user: root
+  tasks:
+    - name: Instalar paquetes necesarios
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - python-openscap
+        - libopenscap8 
+

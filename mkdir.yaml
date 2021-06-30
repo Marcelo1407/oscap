@@ -1,0 +1,9 @@
+---
+- name: Crear directorio /opt/oval-definitions
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: Crea directorio
+      shell: /bin/mkdir -p /opt/oval-definitions
+   

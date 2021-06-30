@@ -1,0 +1,12 @@
+---
+- name: copiar archivo
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: copy 
+      copy:
+        
+        src: '/home/mmazzei/ansible/openscap/probe_dpkginfo'
+        dest: '/usr/lib/x86_64-linux-gnu/openscap/probe_dpkginfo'
+        remote_src: false

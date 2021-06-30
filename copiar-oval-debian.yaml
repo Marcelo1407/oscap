@@ -1,0 +1,11 @@
+---
+- name: Copiar oval debian
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Copia oval buster
+      get_url:
+        url: https://www.debian.org/security/oval/oval-definitions-buster.xml
+        dest: /opt/oval-definitions/oval-definitions-buster.xml
+      environment:  
+        https_proxy: http://apps_actualiza_so:..cnULar@10.1.1.86:3128
