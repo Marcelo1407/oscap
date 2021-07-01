@@ -24,7 +24,7 @@
         flat: yes
 
 - name: Copia remota 
-  hosts: all
+  hosts: swsp1001lx
   tasks:
     - name: Copia Remota
       synchronize: 
